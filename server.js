@@ -12,8 +12,13 @@ import DashboardRouter from "./router/dashboard.js";
 
 const app = express();
 dotenv.config();
+app.use(
+  cors({
+    origin: "https://ems-frontend-sooty-seven.vercel.app/",
+    credentials: true,
+  })
+);
 app.use(express.json());
-app.use(cors());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/departments", departmentRouter);
 app.use("/api/v1/employees", empRouter);
