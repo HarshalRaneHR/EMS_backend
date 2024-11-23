@@ -14,32 +14,9 @@ const app = express();
 dotenv.config();
 app.use(
   cors({
-    origin: function (origin, callback) {
-      const allowedOrigins = [
-        "https://ems-frontend-sooty-seven.vercel.app",
-        // Add any other allowed origins here
-      ];
-      if (allowedOrigins.includes(origin) || !origin) {
-        callback(null, true); // Allow the request if origin matches or if it's a server-side request (no origin)
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true, // Allow cookies and credentials
+    origin: "*",
   })
 );
-
-app.options("*", cors());
-
-// Middleware to set headers for CORS and HTTP methods
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  next();
-});
 
 app.use(express.json());
 app.use("/api/v1/user", userRouter);
