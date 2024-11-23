@@ -14,7 +14,7 @@ const app = express();
 dotenv.config();
 app.use(
   cors({
-    origin: "https://ems-frontend-sooty-seven.vercel.app/",
+    origin: "https://ems-frontend-sooty-seven.vercel.app",
     credentials: true,
   })
 );
